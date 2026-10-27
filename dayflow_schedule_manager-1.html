@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DayFlow — Plan your day</title>
+<style>
+:root{--bg:#080d18;--panel:#0d1424;--panel2:#111a2e;--line:#202b45;--text:#edf2ff;--muted:#9ba9c8;--purple:#8b5cf6;--blue:#4599ff;--green:#20d6a0;--pink:#f34b9a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#151538 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.45 Inter,system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{min-height:100vh;display:grid;grid-template-columns:220px 1fr}.sidebar{border-right:1px solid var(--line);padding:24px 15px;display:flex;flex-direction:column;gap:8px;background:#080d18cc}.brand{font-size:25px;font-weight:800;letter-spacing:-1px;margin:0 10px 25px;color:#c3adff}.brand span{color:#8b5cf6}.nav{border:0;background:transparent;color:var(--muted);text-align:left;padding:12px 14px;border-radius:12px;display:flex;gap:12px;align-items:center}.nav.active,.nav:hover{background:linear-gradient(100deg,#4c2a9b88,#28215b88);color:white}.nav .ico{font-size:19px;width:24px;text-align:center}.sidequote{margin:auto 8px 0;color:#c2c9e0;font-style:italic;font-size:16px;line-height:1.5}.main{min-width:0}.topbar{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:15px}.search{max-width:480px;width:55%;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--text)}.profile{display:flex;align-items:center;gap:10px;color:#e4e9ff}.avatar{display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:linear-gradient(135deg,#aa72ff,#5143ce);font-weight:700}.content{padding:25px 28px 35px;max-width:1700px;margin:auto}.welcome{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:22px}.welcome h1{font-size:25px;margin:0 0 3px}.welcome p{color:var(--muted);margin:0}.date{color:var(--muted);white-space:nowrap}.grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,.95fr);gap:18px}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.card{background:linear-gradient(145deg,#0e1627f5,#0a1120f5);border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:0 8px 24px #00000012}.stat-icon{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:20px;margin-bottom:12px;background:#5230a4;color:#d9caff}.stat:nth-child(2) .stat-icon{background:#075f50;color:#64f4cf}.stat:nth-child(3) .stat-icon{background:#67224a;color:#ff9ac9}.stat:nth-child(4) .stat-icon{background:#123e70;color:#8cc9ff}.label{font-size:13px;color:#c5d0eb}.big{font-size:25px;font-weight:750;line-height:1.25}.small{font-size:12px;color:var(--muted);margin-top:4px}.bar{height:8px;background:#1b2741;border-radius:9px;overflow:hidden;margin-top:11px}.bar span{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#8056f6,#4b9bff)}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:10px}.section-head h2{font-size:17px;margin:0}.link{color:#ad8cff;border:0;background:transparent;font-size:12px}.timeline{display:flex;flex-direction:column}.event{display:grid;grid-template-columns:78px 14px 1fr auto;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #19233a}.event:last-child{border-bottom:0}.time{font-size:12px;color:#d8e0f6}.dot{width:10px;height:10px;border-radius:50%;background:#9667ff;box-shadow:0 0 0 4px #8b5cf622}.event-title{font-weight:600}.event-sub{font-size:12px;color:var(--muted)}.pill{font-size:11px;padding:5px 9px;border-radius:20px;background:#1a2940;color:#b8c6e8;white-space:nowrap}.pill.done{background:#064b40;color:#5df1c4}.pill.now{background:#33205d;color:#c6a9ff}.tasks-list{display:flex;flex-direction:column;gap:14px}.task{display:grid;grid-template-columns:20px 1fr auto;align-items:start;gap:10px}.task input{accent-color:#8b5cf6;width:18px;height:18px;margin:2px 0}.task-title{font-size:13px}.task-title.completed{text-decoration:line-through;color:#7786a5}.task-meta{font-size:12px;color:var(--muted);margin-top:3px}.task-del{border:0;background:transparent;color:#8190b2;font-size:18px;padding:0 3px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.action{border:1px solid var(--line);border-radius:12px;background:#111a2e;color:#e5eaff;padding:13px 8px}.action span{display:block;color:#a88bff;font-size:22px}.action:hover{border-color:#7553d5;background:#171e38}.calendar{margin-top:16px}.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.cal-head button{border:0;background:transparent;color:#bba5ff;font-size:20px}.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center}.cal-grid span{padding:6px 0;font-size:12px;color:#bdc8e2}.cal-grid .weekday{color:#7787a8;font-size:11px}.cal-grid .today{background:#8055ed;color:white;border-radius:50%}.progress-ring{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#6c8cff 0 72%,#202b48 72%);position:relative;flex-shrink:0}.progress-ring:before{content:"";position:absolute;inset:10px;background:#0c1424;border-radius:50%}.progress-ring div{position:relative;text-align:center}.progress-ring strong{display:block;font-size:24px}.progress-row{display:flex;align-items:center;gap:18px}.legend{flex:1;display:grid;gap:10px}.legend div{display:flex;justify-content:space-between;color:#c9d4ef;font-size:13px}.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;background:#6c8cff}.legend div:nth-child(2) i{background:#20d6a0}.legend div:nth-child(3) i{background:#f34b9a}.quote{margin-top:16px;min-height:145px;background:linear-gradient(100deg,#111a2e,#1d1740);display:flex;align-items:end;font-size:17px;font-style:italic;color:#d8dff7}.lower-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}.mini-card{background:linear-gradient(135deg,#121b31,#0c1221);border:1px solid var(--line);border-radius:15px;padding:16px}.mini-card .emoji{font-size:23px}.mini-card h3{font-size:14px;margin:9px 0 3px}.mini-card p{font-size:12px;color:var(--muted);margin:0 0 12px}.go{border:0;border-radius:20px;background:#263a83;color:white;padding:6px 13px;font-size:12px}.modal-backdrop{position:fixed;inset:0;background:#02040acc;display:none;place-items:center;padding:18px;z-index:10}.modal-backdrop.show{display:grid}.modal{width:min(440px,100%);background:#0e1628;border:1px solid #303b5b;border-radius:18px;padding:22px}.modal h2{margin:0 0 16px}.field{display:grid;gap:6px;margin-bottom:12px;color:#bdc9e4;font-size:13px}.field input,.field select{width:100%;padding:11px;border:1px solid var(--line);background:#080f1e;color:white;border-radius:10px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.btn{border:1px solid var(--line);border-radius:10px;padding:9px 14px;background:#141e33;color:#eaf0ff}.btn.primary{background:#7751df;border-color:#7751df}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#18233b;border:1px solid #344366;border-radius:12px;padding:10px 16px;display:none;z-index:20}.toast.show{display:block}
+@media(max-width:1050px){.app{grid-template-columns:76px 1fr}.sidebar{padding:20px 10px}.brand{font-size:0;margin:0 auto 25px}.brand:after{content:"D";font-size:24px}.nav{justify-content:center;padding:13px 8px}.nav .navtext,.sidequote{display:none}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.rightcol{display:grid;grid-template-columns:1fr 1fr;gap:16px}.rightcol .card{margin:0}.calendar{margin:0}.quote{display:none}.lower-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.app{display:block;padding-bottom:66px}.sidebar{position:fixed;z-index:5;bottom:0;left:0;right:0;height:62px;border-right:0;border-top:1px solid var(--line);padding:5px;display:flex;flex-direction:row;justify-content:space-around;background:#080d18f5}.brand{display:none}.nav{flex:1;display:flex;flex-direction:column;gap:0;padding:5px 2px;font-size:10px}.nav .ico{font-size:17px}.nav .navtext{display:block}.topbar{height:60px;padding:0 13px}.search{width:70%;font-size:12px}.profile{font-size:0}.avatar{font-size:13px}.content{padding:19px 13px}.welcome{align-items:flex-start}.welcome h1{font-size:21px}.welcome p{font-size:12px}.date{font-size:11px}.stats{gap:9px}.card{padding:13px}.big{font-size:22px}.grid{gap:12px}.rightcol{display:flex;flex-direction:column}.event{grid-template-columns:64px 10px 1fr;gap:8px}.event .pill{grid-column:3;justify-self:start}.time{font-size:11px}.lower-cards{gap:9px}.mini-card{padding:12px}.progress-row{gap:12px}.progress-ring{width:100px;height:100px}.section-head h2{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><span>〽</span> DayFlow</div>
+  <button class="nav active" data-page="Home"><span class="ico">⌂</span><span class="navtext">Home</span></button>
+  <button class="nav" data-page="Schedule"><span class="ico">▦</span><span class="navtext">Schedule</span></button>
+  <button class="nav" data-page="Tasks"><span class="ico">☑</span><span class="navtext">Tasks</span></button>
+  <button class="nav" data-page="Study Planner"><span class="ico">▤</span><span class="navtext">Study Planner</span></button>
+  <button class="nav" data-page="Gym Tracker"><span class="ico">⚒</span><span class="navtext">Gym Tracker</span></button>
+  <button class="nav" data-page="Calendar"><span class="ico">▣</span><span class="navtext">Calendar</span></button>
+  <button class="nav" data-page="Progress"><span class="ico">▥</span><span class="navtext">Progress</span></button>
+  <button class="nav" data-page="Settings"><span class="ico">⚙</span><span class="navtext">Settings</span></button>
+  <div class="sidequote">“Better planning,<br> bigger dreams.”<br><br><span style="color:#8b5cf6">━━</span></div>
+</aside>
+<main class="main">
+  <header class="topbar"><input id="search" class="search" placeholder="⌕  Search tasks, subjects, or anything…"><div class="profile"><span>♧</span><span class="avatar">S</span><span id="profileName">You ▾</span></div></header>
+  <div class="content">
+    <div class="welcome"><div><h1 id="greeting">Good day! 👋</h1><p>Stay consistent. Small steps make big progress.</p></div><div class="date" id="todayDate"></div></div>
+    <div class="stats">
+      <div class="card stat"><div class="stat-icon">▣</div><div class="label">Today's Tasks</div><div class="big" id="taskCount">5</div><div class="small" id="taskCompleted">0 completed</div><div class="bar"><span id="taskBar" style="width:0%"></span></div></div>
+      <div class="card stat"><div class="stat-icon">▤</div><div class="label">Study Hours</div><div class="big"><span id="studyHours">0</span> <span style="font-size:13px;color:#9ba9c8">/ 4 hrs</span></div><div class="small">Daily study goal</div><div class="bar"><span id="studyBar" style="width:0%;background:linear-gradient(90deg,#20d6a0,#22b88b)"></span></div></div>
+      <div class="card stat"><div class="stat-icon">⚒</div><div class="label">Gym Sessions</div><div class="big" id="gymCount">0 / 1</div><div class="small">Move a little every day</div><div class="bar"><span id="gymBar" style="width:0%;background:linear-gradient(90deg,#f34b9a,#fb77bc)"></span></div></div>
+      <div class="card stat"><div class="stat-icon">◎</div><div class="label">Daily Goal</div><div class="big" id="dailyGoal">0%</div><div class="small">Keep building momentum</div><div class="bar"><span id="goalBar" style="width:0%;background:linear-gradient(90deg,#4599ff,#55c3ff)"></span></div></div>
+    </div>
+    <div class="grid">
+      <div class="leftcol">
+        <section class="card">
+          <div class="section-head"><h2>▣ &nbsp;Today's Schedule</h2><button class="link" id="addScheduleTop">+ Add event</button></div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+        <div class="lower-cards">
+          <div class="mini-card"><div class="emoji">📚</div><h3>Study Planner</h3><p>Plan subjects and track progress.</p><button class="go" data-open="study">Plan study →</button></div>
+          <div class="mini-card"><div class="emoji">🏋️</div><h3>Gym Tracker</h3><p>Keep workouts on your calendar.</p><button class="go" data-open="gym">Add workout →</button></div>
+          <div class="mini-card"><div class="emoji">🗓️</div><h3>Calendar</h3><p>See your month at a glance.</p><button class="go" data-open="calendar">View dates →</button></div>
+          <div class="mini-card"><div class="emoji">📈</div><h3>Progress</h3><p>Small wins add up over time.</p><button class="go" data-open="progress">View progress →</button></div>
+        </div>
+      </div>
+      <div class="rightcol">
+        <section class="card">
+          <div class="section-head"><h2>☑ &nbsp;Tasks</h2><button class="link" id="viewTasks">View all →</button></div>
+          <div class="tasks-list" id="tasksList"></div>
+          <button class="btn" style="width:100%;margin-top:16px" id="addTask">＋ Add a task</button>
+        </section>
+        <section class="card">
+          <div class="section-head"><h2>⚡ Quick Actions</h2></div>
+          <div class="actions"><button class="action" id="quickTask"><span>＋</span>Add Task</button><button class="action" id="quickSchedule"><span>▣</span>Add Schedule</button><button class="action" id="quickStudy"><span>▤</span>Add Study Plan</button><button class="action" id="quickGym"><span>⚒</span>Add Workout</button></div>
+        </section>
+        <section class="card calendar">
+          <div class="cal-head"><strong id="monthLabel">Calendar</strong><div><button id="prevMonth">‹</button> <button id="nextMonth">›</button></div></div>
+          <div class="cal-grid" id="calendarGrid"></div>
+        </section>
+        <section class="card">
+          <div class="section-head"><h2>♧ &nbsp;Progress</h2><span class="small">Today</span></div>
+          <div class="progress-row"><div class="progress-ring" id="progressRing"><div><strong id="progressNumber">0%</strong><span class="small">complete</span></div></div><div class="legend"><div><span><i></i>Tasks</span><b id="legendTasks">0%</b></div><div><span><i></i>Study</span><b id="legendStudy">0%</b></div><div><span><i></i>Gym</span><b id="legendGym">0%</b></div></div></div>
+        </section>
+        <section class="card quote">“Discipline today,<br> freedom tomorrow.”<br><span class="small">— DayFlow</span></section>
+      </div>
+    </div>
+  </div>
+</main>
+</div>
+<div class="modal-backdrop" id="modalBackdrop"><form class="modal" id="modalForm"><h2 id="modalTitle">Add task</h2><div id="modalFields"></div><div class="modal-actions"><button type="button" class="btn" id="cancelModal">Cancel</button><button class="btn primary" type="submit">Save</button></div></form></div>
+<div class="toast" id="toast"></div>
+<script>
+const $=s=>document.querySelector(s);
+const dateKey=()=>new Date().toISOString().slice(0,10);
+const defaultTasks=[
+ {id:1,title:"Review today's priorities",time:"09:00",category:"Personal",done:false,date:dateKey()},
+ {id:2,title:"Study session",time:"10:00",category:"Study",done:false,date:dateKey()},
+ {id:3,title:"Maths revision",time:"16:00",category:"Study",done:false,date:dateKey()},
+ {id:4,title:"Go for a workout",time:"17:30",category:"Gym",done:false,date:dateKey()},
+ {id:5,title:"Plan tomorrow",time:"21:00",category:"Personal",done:false,date:dateKey()}
+];
+const defaultEvents=[
+ {id:101,title:"Morning routine",sub:"Get ready for the day",time:"07:00",category:"Personal",done:false},
+ {id:102,title:"Focus session",sub:"Deep work / study",time:"10:00",category:"Study",done:false},
+ {id:103,title:"Lunch & break",sub:"Recharge",time:"13:00",category:"Personal",done:false},
+ {id:104,title:"Workout",sub:"Movement and strength",time:"17:30",category:"Gym",done:false},
+ {id:105,title:"Plan tomorrow",sub:"Review and reset",time:"21:00",category:"Personal",done:false}
+];
+let tasks=JSON.parse(localStorage.getItem("dayflow_tasks")||"null")||defaultTasks;
+let events=JSON.parse(localStorage.getItem("dayflow_events")||"null")||defaultEvents;
+let studyHours=Number(localStorage.getItem("dayflow_study")||0),gymDone=localStorage.getItem("dayflow_gym")==="true";
+let calDate=new Date();
+function persist(){localStorage.setItem("dayflow_tasks",JSON.stringify(tasks));localStorage.setItem("dayflow_events",JSON.stringify(events));localStorage.setItem("dayflow_study",studyHours);localStorage.setItem("dayflow_gym",gymDone)}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function fmtDate(d){return d.toLocaleDateString(undefined,{weekday:"short",day:"2-digit",month:"short",year:"numeric"})}
+function time12(t){let [h,m]=t.split(":").map(Number);return `${String(h%12||12).padStart(2,"0")}:${String(m).padStart(2,"0")} ${h>=12?"PM":"AM"}`}
+function render(){
+ const now=new Date(),hour=now.getHours();$("#greeting").textContent=(hour<12?"Good morning":hour<17?"Good afternoon":"Good evening")+", welcome to DayFlow 👋";$("#todayDate").textContent=fmtDate(now);$("#profileName").textContent=(localStorage.getItem("dayflow_name")||"You")+" ▾";
+ const done=tasks.filter(t=>t.done).length, pct=tasks.length?Math.round(done/tasks.length*100):0, sp=Math.min(100,Math.round(studyHours/4*100)),gp=gymDone?100:0,goal=Math.round((pct+sp+gp)/3);
+ $("#taskCount").textContent=tasks.length;$("#taskCompleted").textContent=done+" completed";$("#taskBar").style.width=pct+"%";$("#studyHours").textContent=studyHours.toFixed(1).replace(/\.0$/,"");$("#studyBar").style.width=sp+"%";$("#gymCount").textContent=(gymDone?1:0)+" / 1";$("#gymBar").style.width=gp+"%";$("#dailyGoal").textContent=goal+"%";$("#goalBar").style.width=goal+"%";
+ $("#legendTasks").textContent=pct+"%";$("#legendStudy").textContent=sp+"%";$("#legendGym").textContent=gp+"%";$("#progressNumber").textContent=goal+"%";$("#progressRing").style.background=`conic-gradient(#6c8cff 0 ${goal}%,#202b48 ${goal}% 100%)`;
+ const q=$("#search").value.toLowerCase();
+ $("#tasksList").innerHTML=tasks.filter(t=>!q||(t.title+" "+t.category).toLowerCase().includes(q)).slice().sort((a,b)=>a.time.localeCompare(b.time)).map(t=>`<div class="task"><input type="checkbox" data-task="${t.id}" ${t.done?"checked":""} aria-label="Complete task"><div><div class="task-title ${t.done?"completed":""}">${esc(t.title)}</div><div class="task-meta">${esc(t.date===dateKey()?"Today":t.date)} · ${time12(t.time)} · ${esc(t.category)}</div></div><button class="task-del" data-delete="${t.id}" aria-label="Delete task">⋮</button></div>`).join("")||'<div class="small">No matching tasks. Add one to get started.</div>';
+ $("#timeline").innerHTML=events.slice().sort((a,b)=>a.time.localeCompare(b.time)).map(e=>`<div class="event"><div class="time">${time12(e.time)}</div><div class="dot"></div><div><div class="event-title">${esc(e.title)}</div><div class="event-sub">${esc(e.sub||e.category)}</div></div><span class="pill ${e.done?"done":""}">${e.done?"✓ Done":esc(e.category)}</span></div>`).join("");
+ renderCalendar();
+}
+function renderCalendar(){const y=calDate.getFullYear(),m=calDate.getMonth();$("#monthLabel").textContent=calDate.toLocaleDateString(undefined,{month:"long",year:"numeric"});let first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate(),cells=[];["S","M","T","W","T","F","S"].forEach(x=>cells.push(`<span class="weekday">${x}</span>`));for(let i=0;i<42;i++){let day=i-first+1,muted=day<1||day>days,n=day<1?prev+day:day>days?day-days:day;let isToday=!muted&&y===new Date().getFullYear()&&m===new Date().getMonth()&&n===new Date().getDate();cells.push(`<span class="${isToday?"today":""}" style="${muted?"opacity:.35":""}">${n}</span>`)}$("#calendarGrid").innerHTML=cells.join("")}
+function toast(msg){$("#toast").textContent=msg;$("#toast").classList.add("show");setTimeout(()=>$("#toast").classList.remove("show"),2200)}
+function openModal(type){
+ const backdrop=$("#modalBackdrop"),fields=$("#modalFields");$("#modalTitle").textContent=type==="task"?"Add a task":type==="event"?"Add schedule event":type==="study"?"Add study session":"Log a workout";
+ let html=`<label class="field">Title<input name="title" required maxlength="90" placeholder="${type==="task"?"e.g. Revise Physics":type==="event"?"e.g. College":"e.g. Focus session"}"></label>`;
+ if(type==="event")html+=`<label class="field">Details<input name="sub" placeholder="Optional details"></label>`;
+ html+=`<label class="field">Time<input name="time" type="time" value="18:00" required></label>`;
+ if(type==="task")html+=`<label class="field">Category<select name="category"><option>Personal</option><option>Study</option><option>Gym</option><option>Work</option><option>College</option></select></label><label class="field">Date<input name="date" type="date" value="${dateKey()}" required></label>`;
+ if(type==="event")html+=`<label class="field">Category<select name="category"><option>Personal</option><option>Study</option><option>Gym</option><option>Work</option><option>College</option></select></label>`;
+ if(type==="study")html+=`<label class="field">Study duration (hours)<input name="hours" type="number" min=".25" max="12" step=".25" value="1" required></label>`;
+ if(type==="gym")html+=`<label class="field">Workout note<input name="sub" placeholder="e.g. Upper body"></label>`;
+ fields.innerHTML=html;$("#modalForm").dataset.type=type;backdrop.classList.add("show");fields.querySelector("input").focus()
+}
+$("#modalForm").addEventListener("submit",e=>{e.preventDefault();let f=new FormData(e.currentTarget),type=e.currentTarget.dataset.type;
+ if(type==="task"){tasks.push({id:Date.now(),title:f.get("title").trim(),time:f.get("time"),category:f.get("category"),date:f.get("date"),done:false})}
+ if(type==="event"){events.push({id:Date.now(),title:f.get("title").trim(),sub:f.get("sub"),time:f.get("time"),category:f.get("category"),done:false})}
+ if(type==="study"){studyHours=Math.min(24,studyHours+Number(f.get("hours")));toast("Study session logged!")}
+ if(type==="gym"){gymDone=true;events.push({id:Date.now(),title:f.get("title").trim(),sub:f.get("sub")||"Workout session",time:f.get("time"),category:"Gym",done:true});toast("Workout logged!")}
+ persist();render();$("#modalBackdrop").classList.remove("show");if(type==="task"||type==="event")toast("Saved to DayFlow")});
+$("#cancelModal").onclick=()=>$("#modalBackdrop").classList.remove("show");
+$("#modalBackdrop").addEventListener("click",e=>{if(e.target.id==="modalBackdrop")e.currentTarget.classList.remove("show")});
+$("#addTask").onclick=$("#quickTask").onclick=()=>openModal("task");
+$("#addScheduleTop").onclick=$("#quickSchedule").onclick=()=>openModal("event");
+$("#quickStudy").onclick=()=>openModal("study");$("#quickGym").onclick=()=>openModal("gym");
+$("#search").addEventListener("input",render);
+document.addEventListener("change",e=>{if(e.target.matches("[data-task]")){let t=tasks.find(t=>t.id==e.target.dataset.task);if(t)t.done=e.target.checked;persist();render()}});
+document.addEventListener("click",e=>{let b=e.target.closest("[data-delete]");if(b){let id=Number(b.dataset.delete);if(confirm("Delete this task?")){tasks=tasks.filter(t=>t.id!==id);persist();render();toast("Task deleted")}}});
+$("#prevMonth").onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};$("#nextMonth").onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};
+$("#viewTasks").onclick=()=>{document.querySelector(".rightcol .card").scrollIntoView({behavior:"smooth",block:"start"})};
+document.querySelectorAll("[data-open]").forEach(b=>b.onclick=()=>{let v=b.dataset.open;if(v==="study")openModal("study");else if(v==="gym")openModal("gym");else if(v==="calendar"){document.querySelector(".calendar").scrollIntoView({behavior:"smooth"})}else if(v==="progress"){document.querySelector(".progress-ring").scrollIntoView({behavior:"smooth"})}});
+document.querySelectorAll(".nav").forEach(b=>b.onclick=()=>{document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));b.classList.add("active");let p=b.dataset.page;if(p==="Tasks")$("#addTask").scrollIntoView({behavior:"smooth"});else if(p==="Schedule")$("#timeline").scrollIntoView({behavior:"smooth"});else if(p==="Calendar")$(".calendar").scrollIntoView({behavior:"smooth"});else if(p==="Progress")$("#progressRing").scrollIntoView({behavior:"smooth"});else if(p==="Study Planner")openModal("study");else if(p==="Gym Tracker")openModal("gym");else if(p==="Settings"){let name=prompt("What should DayFlow call you?",localStorage.getItem("dayflow_name")||"You");if(name!==null){localStorage.setItem("dayflow_name",name.trim()||"You");render()}}else window.scrollTo({top:0,behavior:"smooth"})});
+render();
+</script>
+</body>
+</html>
